@@ -1,0 +1,18 @@
+***italic***,<em>italic</em>
+***italic*** ***italic***,<em>italic</em> <em>italic</em>
+****italic****,<em>*italic</em>*
+***123 for italic****,<em>123 for italic</em>*
+***123 for italic******123 for italic***,<em>123 for italic</em><em>123 for italic</em>
+***italic 123**** ****italic 123****,<em>italic 123</em>* <em>*italic 123</em>*
+***italic 123 **** ****italic 123 ****,***italic 123 **** ****italic 123 ****
+*** italic 123**** **** italic 123****,*** italic 123**** <em>* italic 123</em>*
+***abc 123 !@#***,<em>abc 123 !@#</em>
+***!?@#%***,<em>!?@#%</em>
+_underscore invalid_,_underscore invalid_
+123,123
+**123**,**123**
+*******,<em>*</em>
+***  ***,***  ***
+***     ***,***     ***
+******,******
+	a                 b,	a                 b

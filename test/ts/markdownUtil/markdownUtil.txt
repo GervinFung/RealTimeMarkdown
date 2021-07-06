@@ -1,0 +1,11 @@
+b,true
+123,true
+abc123,true
+123~!@#*_,true
+abc123~!@#*_,true
+ a ,false
+a123 ,false
+ 1avx,false
+   ~_*!,false
+123   ,false
+  a  ,false

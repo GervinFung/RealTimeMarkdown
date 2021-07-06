@@ -1,0 +1,25 @@
+* {scroll-behavior: smooth}
+
+#sub-root {
+  background-color: var(--secondary-color);
+}
+
+:root {
+  --primary-color: #121212;
+  --secondary-color: #FEFEFE;
+  --red-color: #CC0F39;
+  --green-color: #0FFBF9;
+}
+
+.light-theme {
+  --primary-color: #FEFEFE;
+  --secondary-color: #121212;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  font-weight: 500;
+}
