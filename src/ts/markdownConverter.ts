@@ -1,7 +1,7 @@
-import { checkAndConvertTextToItalic } from './italic';
-import { checkAndConvertTextToUnderline } from './underline';
-import { checkAndConvertTextToStrikeThrough } from './strikeThrough';
-import { checkAndConvertTextToBold } from './bold';
+import { convertItalic } from './italic';
+import { convertLeadingAndTrailingUnderscore } from './underline';
+import { convertStrikeThrough } from './strikeThrough';
+import { convertBold } from './bold';
 
 const NEW_LINE_REG = /\n/g;
 
@@ -15,12 +15,9 @@ export const convertTextToMarkdown = (txt: string): string => {
     if (txt.length === 0) {
         return txt;
     }
-    const italic = checkAndConvertTextToItalic(txt);
-    const bold = checkAndConvertTextToBold(italic);
-    const underline = checkAndConvertTextToUnderline(bold);
-    const strikeThrough = checkAndConvertTextToStrikeThrough(underline);
-    if (strikeThrough.includes('\n')) {
-        return strikeThrough.replace(NEW_LINE_REG, '<br>');
-    }
-    return strikeThrough;
+    const italic = convertItalic(txt);
+    const bold = convertBold(italic);
+    const underline = convertLeadingAndTrailingUnderscore(bold);
+    const strikeThrough = convertStrikeThrough(underline);
+    return strikeThrough.replace(NEW_LINE_REG, '<br>');
 }
