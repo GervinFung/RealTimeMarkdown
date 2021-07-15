@@ -1,7 +1,7 @@
 const LEADING_TRAILING_WHITESPACE = /^[ \s]+|[ \s]+$/;
 
-export const combineWords = (leading: string, middle: string, trailing: string): string => {
-    return leading + middle + trailing;
+export const combineMultipleStrings = (...args: string[]): string => {
+    return args.join('');
 }
 
 export const withoutLeadingTrailingWhitespace = (txt: string) => {

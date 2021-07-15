@@ -34,7 +34,7 @@ class Index extends React.Component<{}, IThemeProps> {
     private subRootDiv = (): React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> => {
         return (
             <div id='sub-root' className={this.state.isLightMode ? 'light-theme' : ''}>
-                <App isLightMode={this.state.isLightMode} toggleTheme={this.toggleTheme}/>
+                {<App isLightMode={this.state.isLightMode} toggleTheme={this.toggleTheme}/>}
             </div>
         );
     }

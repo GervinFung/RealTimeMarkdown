@@ -9,6 +9,11 @@
   --secondary-color: #FEFEFE;
   --red-color: #CC0F39;
   --green-color: #0FFBF9;
+  --code-block:#C7254E;
+  --code-block-background-color: #F9F2F4;
+  --spoiler-tag-background:#202225;
+  --spoiler-tag-hover: #202225CC;
+  --exposed-spoiler-tag: #FFFFFF1A;
 }
 
 .light-theme {

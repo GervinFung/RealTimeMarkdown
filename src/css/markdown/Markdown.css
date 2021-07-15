@@ -33,6 +33,11 @@
     padding: 0 !important;
 }
 
+.padding-and-marginless-paragraph {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 #markdown-text-area {
     resize: none;
 }
@@ -62,4 +67,48 @@
 @media (max-width: 438px) {
     .editor-and-preview {display: block}
     .Markdown {width: 100%}
+}
+
+/* table */
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+/* spoiler */
+.discord-spoiler {
+    background-color: var(--spoiler-tag-background);
+    color: transparent;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.discord-spoiler:hover {
+    background-color: var(--spoiler-tag-hover);
+}
+
+.discord-spoiler:active, .exposed-discord-spoiler {
+    background-color: var(--exposed-spoiler-tag);
+    color: var(--secondary-color);
+    -webkit-user-select: auto;
+    -khtml-user-select: auto;
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    -o-user-select: auto;
+    user-select: auto;
+}
+
+/* code-block */
+.code-block {
+    color: var(--code-block);
+    background-color: var(--code-block-background-color);
+    border-radius: 4px;
 }

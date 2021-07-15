@@ -2,9 +2,9 @@ const cacheName = 'cache';
 const filesToCache = [
     '/',
     '.babelrc',
+    'babel.config.js',
     'package-lock.json',
     'package.json',
-    'public/allPath.js',
     'public/favicon.ico',
     'public/img/logo128.png',
     'public/img/logo144.png',
@@ -28,10 +28,14 @@ const filesToCache = [
     'src/reportWebVitals.ts',
     'src/setupTests.ts',
     'src/ts/bold.ts',
+    'src/ts/code.ts',
+    'src/ts/discordSpoilerTag.ts',
     'src/ts/italic.ts',
     'src/ts/markdownConverter.ts',
     'src/ts/markdownUtil.ts',
+    'src/ts/orderedList.ts',
     'src/ts/strikeThrough.ts',
+    'src/ts/table.ts',
     'src/ts/underline.ts',
     'src/tsx/App.tsx',
     'src/tsx/interface/MarkdownInterface.tsx',
@@ -40,7 +44,7 @@ const filesToCache = [
     'src/tsx/other/Footer.tsx',
     'src/tsx/other/Header.tsx',
     'src/tsx/other/Popup.tsx',
-    'tsconfig.json',    
+    'tsconfig.json'
 ];
 
 const startService = () => {
