@@ -1,19 +1,8 @@
 import { combineMultipleStrings } from './markdownUtil';
 
-const ANY_ORDERED: RegExp = /[^\n]?([\d+].+[\s\S]\r?\n?[ \t]*)+/gi;
-const NUMBER: RegExp = /(([\d+])+)/i;
-const SUB_LIST: RegExp = /(([\d+])+(\D)+\.)/i;
+const ANY_ORDERED: RegExp = /^\d+\.[ ].*(\n\d+\..*)*$/gim;
 
-const formSubList = (content: string, filtered: Array<string>, index: number, i: number): string => {
-    if (SUB_LIST.test(filtered[index])) {
-        const subList = combineMultipleStrings('<li>', filtered[index].trim(), '</li>')
-        if (i === index) {
-            return content + combineMultipleStrings('<ul>', formSubList(subList, filtered, index + 1, i), '</ul>')
-        }
-        return content + formSubList(subList, filtered, index + 1, i)
-    }
-    return content;
-}
+const NUMBER_DOT: RegExp = /(\d+\.)/i;
 
 export const convertOrderedList = (unprocessedInput: string): string => {
     return unprocessedInput.replace(ANY_ORDERED, (string): string => {
@@ -23,14 +12,11 @@ export const convertOrderedList = (unprocessedInput: string): string => {
             return content.trim()
         });
 
-        const processedList = filtered.map((content, index): string => {
-            if (SUB_LIST.test(content)) {
-                return '';
-            }
-            return combineMultipleStrings('<li>', formSubList(content.replace(NUMBER, '').replace('.', '').trim(), filtered, index + 1, index + 1), '</li>');
+        const processedList = filtered.map((content): string => {
+            return combineMultipleStrings('<li>', content.replace(NUMBER_DOT, '').trim(), '</li>');
         }).join('');
 
-        const x = filtered[0].split(' ')[0];
+        const x = filtered[0].split(' ')[0].replace('.', '');
 
         return combineMultipleStrings(`<ol start="${x}">`, processedList, '</ol>');
     });

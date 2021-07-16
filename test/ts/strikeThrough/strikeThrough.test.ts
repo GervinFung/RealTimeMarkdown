@@ -1,8 +1,8 @@
 import {convertStrikeThrough} from '../../../src/ts/strikeThrough';
-import { processFileData } from '../testUtil';
+import { processSingleLineFileData } from '../testUtil';
 
 describe('Test Strike Through Markdown', () => {
-    test.each(processFileData('strikeThrough'))(
+    test.each(processSingleLineFileData('strikeThrough'))(
         'data => %p',
         (data) => {
             expect(convertStrikeThrough(data.input)).toEqual(data.output);

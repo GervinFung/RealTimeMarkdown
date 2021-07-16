@@ -68,6 +68,7 @@ const startService = () => {
                         if (filesToCache.indexOf(key) === -1) {
                             return caches.delete(key);
                         }
+                        return key;
                     })
                 );
             })

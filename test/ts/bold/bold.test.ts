@@ -1,8 +1,8 @@
 import {convertBold} from '../../../src/ts/bold';
-import { processFileData } from '../testUtil';
+import { processSingleLineFileData } from '../testUtil';
 
 describe('Test Bold Markdown', () => {
-    test.each(processFileData('bold'))(
+    test.each(processSingleLineFileData('bold'))(
         'data => %p',
         (data) => {
             expect(convertBold(data.input)).toEqual(data.output);

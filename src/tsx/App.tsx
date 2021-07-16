@@ -17,7 +17,7 @@ class App extends React.Component<IThemeToggle, IUpdatePreview> {
         this.key = 'markdownCont';
         const localStor = localStorage.getItem(this.key);
         this.state = {
-            markdownContent: localStor === null ? '`code block`\n**bold**\n***italic***\n_underscore_\n~~strike through~~\n|| discord spoiler tag    ||\n|  Syntax      |Description  | Test Text     |\n|  :---        |     :----:    |          ---: |\n|  **bold**    | _underscore_ | `code block`  |\n| ***italic*** | ~~strike through~~ | || discord spoiler tag    ||  |\n\n1. **bold**\n1. _underscore_\n1. `code block`\n1. ***italic***\n1. ~~strike through~~\n1. || discord spoiler tag    ||' : localStor,
+            markdownContent: localStor === null ? '**code block**\n**bold**\n***italic***\n_underscore_\n~~strike through~~\n|| discord spoiler tag    ||\n\n|  Syntax      |Description  | Test Text     |\n|  :---        |     :----:    |          ---: |\n|  **bold 1123.**    | _123. underscore_ | `code block`  |\n| ***123 italic 123*** | ~~seems ok strike through~~ | || discord spoiler tag    ||  |\n| 0    | abc | 123123123  |\n\n1. **_bold_**\n1. _123_\n1. `**another 123**`\n1. *****italic*****\n1. `~~strike through~~`\n1. || discord spoiler tag    ||' : localStor,
             fullMarkdownFeature: false
         };
     }

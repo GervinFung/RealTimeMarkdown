@@ -1,8 +1,8 @@
 import {withoutLeadingTrailingWhitespace} from '../../../src/ts/markdownUtil';
-import { processFileData } from '../testUtil';
+import { processSingleLineFileData } from '../testUtil';
 
 describe('Test MarkdownUtil Markdown', () => {
-    test.each(processFileData('markdownUtil'))(
+    test.each(processSingleLineFileData('markdownUtil'))(
         'data => %p',
         (data) => {
             expect(withoutLeadingTrailingWhitespace(data.input)).toEqual(JSON.parse(data.output));

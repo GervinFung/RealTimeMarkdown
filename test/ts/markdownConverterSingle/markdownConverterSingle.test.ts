@@ -1,8 +1,8 @@
 import {convertTextToMarkdown} from '../../../src/ts/markdownConverter';
-import { processFileData } from '../testUtil';
+import { processSingleLineFileData } from '../testUtil';
 
-describe('Test MarkdownConverter Markdown', () => {
-    test.each(processFileData('markdownConverter'))(
+describe('Test MarkdownConverter SingleLine Markdown', () => {
+    test.each(processSingleLineFileData('markdownConverterSingle'))(
         'data => %p',
         (data) => {
             expect(convertTextToMarkdown(data.input)).toEqual(data.output);
