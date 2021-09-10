@@ -26,7 +26,6 @@ export const convertTextToMarkdown = (txt: string): string => {
     const discordSpoilerTag = convertDiscordSpoilerTag(strikeThrough);
     const table = convertTable(discordSpoilerTag);
     const orderedList = convertOrderedList(table);
-    console.log(orderedList)
 
     return orderedList.replace(NEW_LINE_REG, '<br>');
 }

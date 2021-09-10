@@ -1,5 +1,5 @@
 import {combineMultipleStrings, withoutLeadingTrailingWhitespace} from './markdownUtil';
-const LEADING_TRAILING_UNDERSCORE: RegExp = /\b_(\S[\s\S]*?)_\b/gi;
+const LEADING_TRAILING_UNDERSCORE = /\b_(\S[\s\S]*?)_\b/gi;
 
 export const convertLeadingAndTrailingUnderscore = (unprocessedInput: string): string => {
     return unprocessedInput.replace(LEADING_TRAILING_UNDERSCORE, (string, txt): string => {

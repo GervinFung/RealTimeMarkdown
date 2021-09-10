@@ -1,44 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './css/other/index.css';
 import App from './tsx/App';
 import reportWebVitals from './reportWebVitals';
-import { IThemeProps } from './tsx/interface/MarkdownInterface';
 
-class Index extends React.Component<{}, IThemeProps> {
+const Index = () => {
 
-    private readonly key: string;
+    const key = 'isLightMode';
 
-    private constructor(readonly props: any) {
-        super(props);
-        this.key = 'isLightMode';
-        const localStor = localStorage.getItem(this.key);
-        this.state = {
-            isLightMode: localStor === null ? false : JSON.parse(localStor)
-        };
-    }
+    const getIsLightMode = (): boolean => {
+        const localStor = localStorage.getItem(key);
+        return localStor === null ? false : JSON.parse(localStor);
+    };
 
-    private toggleTheme = () => {
-        this.setState(prevState => ({
-            isLightMode: !prevState.isLightMode
-        }));
-        localStorage.setItem(this.key, JSON.stringify(!this.state.isLightMode));
-    }
+    const [isLightMode, setIsLightMode] = useState(getIsLightMode());
 
-    render() {
-        return (
-            this.subRootDiv()
-        );
-    }
+    const toggleTheme = () => setIsLightMode(!isLightMode);
 
-    private subRootDiv = (): React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> => {
-        return (
-            <div id='sub-root' className={this.state.isLightMode ? 'light-theme' : ''}>
-                {<App isLightMode={this.state.isLightMode} toggleTheme={this.toggleTheme}/>}
-            </div>
-        );
-    }
-}
+    useEffect(() => {
+        localStorage.setItem(key, JSON.stringify(isLightMode));
+    }, [isLightMode]);
+
+    return (
+        <div id='sub-root' className={isLightMode ? 'light-theme' : ''}>
+            {<App isLightMode={isLightMode} toggleTheme={toggleTheme}/>}
+        </div>
+    );
+};
 
 ReactDOM.render(
     <React.StrictMode>

@@ -1,6 +1,6 @@
 import {combineMultipleStrings, withoutLeadingTrailingWhitespace} from './markdownUtil';
 
-const ANY_BOLD: RegExp = /(?:\*){2}([\s\S]+?)(?:\*){2}/gi;
+const ANY_BOLD = /(?:\*){2}([\s\S]+?)(?:\*){2}/gi;
 
 export const convertBold = (unprocessedInput: string): string => {
     return unprocessedInput.replace(ANY_BOLD, (string, txt): string => {

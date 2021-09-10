@@ -1,15 +1,14 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 // set "isolatedModules": false at tsconfig.json to run this file
-readAllPath();
 
-function readAllPath() {
+const readAllPath = () => {
     const directoryName = '.';
     const allFilesCache = storeAllPath(fs.readdirSync(directoryName), directoryName);
     writeToFile(allFilesCache);
-}
+};
 
-function storeAllPath(fileNames: Array<string>, directoryName: string): any {
+const storeAllPath = (fileNames: Array<string>, directoryName: string): any => {
     return fileNames.map((file: string) => {
         if (!file.includes('.git') && file !== 'node_modules' && file !== 'build' && file !== 'test') {
             const filePath = directoryName + '/' + file;
@@ -21,9 +20,9 @@ function storeAllPath(fileNames: Array<string>, directoryName: string): any {
         }
         return '/';
     })
-}
+};
 
-function mapFileToString(file: Array<string> | string): string {
+const mapFileToString = (file: Array<string> | string): string => {
     if (Array.isArray(file)) {
         return file.map(files => {
             if (Array.isArray(files)) {
@@ -36,10 +35,10 @@ function mapFileToString(file: Array<string> | string): string {
     }
 }
 
-function writeToFile(allFilesCache: Array<string>): void {
+const writeToFile = (allFilesCache: Array<string>) => {
     const file = fs.createWriteStream('cache.txt');
-    file.write(allFilesCache.map((file: Array<string> | string) => {
-        return mapFileToString(file);
-    }).join(''));
+    file.write(allFilesCache.map((file: Array<string> | string) => mapFileToString(file)).join(''));
     file.end();
-}
+};
+
+readAllPath();
