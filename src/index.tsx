@@ -1,36 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom';
-import './css/other/index.css';
-import App from './tsx/App';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-const Index = () => {
-
-    const key = 'isLightMode';
-
-    const getIsLightMode = (): boolean => {
-        const localStor = localStorage.getItem(key);
-        return localStor === null ? false : JSON.parse(localStor);
-    };
-
-    const [isLightMode, setIsLightMode] = useState(getIsLightMode());
-
-    const toggleTheme = () => setIsLightMode(!isLightMode);
-
-    useEffect(() => {
-        localStorage.setItem(key, JSON.stringify(isLightMode));
-    }, [isLightMode]);
-
-    return (
-        <div id='sub-root' className={isLightMode ? 'light-theme' : ''}>
-            {<App isLightMode={isLightMode} toggleTheme={toggleTheme}/>}
-        </div>
-    );
-};
+import * as serviceWorker from './serviceWorkerRegistration';
 
 ReactDOM.render(
     <React.StrictMode>
-        <Index />
+        <App />
     </React.StrictMode>,
     document.getElementById('root')
 );
@@ -39,3 +15,4 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+serviceWorker.register();
