@@ -1,0 +1,11 @@
+{
+    "name": "markdown-editor-dev-server",
+    "version": "0.0.0",
+    "private": true,
+    "author": "PoolOfDeath20",
+    "license": "MIT",
+    "type": "module",
+    "dependencies": {
+        "express": "^4.17.3"
+    }
+}
