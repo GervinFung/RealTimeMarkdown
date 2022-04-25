@@ -1,36 +1,37 @@
-import { css } from '@emotion/css';
 import * as React from 'react';
-import Editor from './components/Editor';
-import Preview from './components/Preview';
+import Editor from './components/editor';
+import Preview from './components/preview';
+import { css } from '@emotion/css';
+import Font from './components/common/Font';
 
 const App = () => {
     const [state, setState] = React.useState({
-        text: 'Hello',
+        doc: '# Welcome\n',
     });
 
-    const { text } = state;
+    const { doc } = state;
 
-    const onChange = (text: string) => {
-        setState((prev) => ({
-            ...prev,
-            text,
-        }));
-    };
+    const handleDocChange = React.useCallback(
+        (doc) =>
+            setState((prev) => ({
+                ...prev,
+                doc,
+            })),
+        []
+    );
 
     return (
         <div
             className={css`
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-                height: 100vh;
-                font-family: monospace;
-                width: 100%;
-                box-sizing: border-box;
+                background-color: transparent;
+                display: flex;
+                flex-direction: row;
+                height: 100%;
             `}
         >
-            <Editor text={text} onChange={onChange} />
-            <Preview text={text} />
+            <Font fontFamily="JetBrains+Mono" />
+            <Editor onChange={handleDocChange} initialDoc={doc} />
+            <Preview doc={doc} />
         </div>
     );
 };

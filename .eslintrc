@@ -26,13 +26,14 @@
             2,
             { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
         ],
-        "no-constant-condition": [2, { "checkLoops": false }],
+        "no-constant-condition": 2,
         "no-restricted-syntax": [
             2,
             {
                 "selector": "TSEnumDeclaration",
                 "message": "Don't declare enums"
             }
-        ]
+        ],
+        "semi": [2, "always"]
     }
 }

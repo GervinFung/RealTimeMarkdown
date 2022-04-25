@@ -1,18 +1,47 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import * as serviceWorker from './serviceWorkerRegistration';
+import { Global, css } from '@emotion/react';
 
 ReactDOM.render(
     <React.StrictMode>
-        <App />
+        <>
+            <Global
+                styles={css`
+                    html,
+                    body {
+                        background-color: transparent;
+                        height: 100%;
+                    }
+                    body {
+                        margin: 0;
+                        font-family: JetBrains Mono;
+                        -webkit-font-smoothing: antialiased;
+                        -moz-osx-font-smoothing: grayscale;
+                    }
+                    code {
+                        font-family: JetBrains Mono;
+                    }
+                    #root {
+                        height: 100%;
+                    }
+                    * {
+                        scrollbar-width: thin;
+                        scrollbar-color: gray;
+                    }
+                    *::-webkit-scrollbar {
+                        width: 7px;
+                    }
+                    *::-webkit-scrollbar-track {
+                        background: transparent;
+                    }
+                    *::-webkit-scrollbar-thumb {
+                        background-color: gray;
+                    }
+                `}
+            />
+            <App />
+        </>
     </React.StrictMode>,
     document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-serviceWorker.register();
