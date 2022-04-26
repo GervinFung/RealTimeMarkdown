@@ -38,7 +38,7 @@ const useCodeMirror = <T extends Element>({
     const syntaxHighlighting = HighlightStyle.define([
         {
             tag: tags.heading1,
-            fontSize: '1.6em',
+            fontSize: '1.0em',
             fontWeight: 'bold',
         },
         {

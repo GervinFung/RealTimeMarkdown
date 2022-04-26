@@ -1,9 +1,5 @@
 import { build } from 'esbuild';
 
-console.log({
-    node_env: process.env.NODE_ENV,
-});
-
 (() =>
     build({
         entryPoints: ['src/index.tsx'],
