@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
@@ -8,11 +8,11 @@ import { defaultSchema } from 'hast-util-sanitize';
 import 'github-markdown-css/github-markdown.css';
 import { css } from '@emotion/css';
 
-interface Props {
+const Preview = ({
+    doc,
+}: Readonly<{
     doc: string;
-}
-
-const Preview: React.FC<Props> = (props) => {
+}>) => {
     const schema = {
         ...defaultSchema,
         attributes: {
@@ -30,7 +30,8 @@ const Preview: React.FC<Props> = (props) => {
                 code: RemarkCode,
             },
         })
-        .processSync(props.doc).result;
+        .processSync(doc).result;
+
     return (
         <div
             className={`preview markdown-body ${css`
