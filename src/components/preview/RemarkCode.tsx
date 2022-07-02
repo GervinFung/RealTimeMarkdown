@@ -37,15 +37,15 @@ const RemarkCode = ({
         });
     }, [children]);
 
-    return spans.length === 0 ? (
-        <code>{children}</code>
-    ) : (
+    return (
         <code>
-            {spans.map((span, i) => (
-                <span key={i} className={span.style || ''}>
-                    {span.text}
-                </span>
-            ))}
+            {!spans.length
+                ? children
+                : spans.map((span, i) => (
+                      <span key={i} className={span.style || ''}>
+                          {span.text}
+                      </span>
+                  ))}
         </code>
     );
 };

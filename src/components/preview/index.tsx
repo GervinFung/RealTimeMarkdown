@@ -12,42 +12,44 @@ const Preview = ({
     doc,
 }: Readonly<{
     doc: string;
-}>) => {
-    const schema = {
-        ...defaultSchema,
-        attributes: {
-            ...defaultSchema.attributes,
-            code: [...(defaultSchema.attributes?.code || []), 'className'],
-        },
-    };
-    const md = unified()
-        .use(remarkParse)
-        .use(remarkGfm)
-        .use(remarkReact, {
-            createElement: React.createElement,
-            sanitize: schema,
-            remarkReactComponents: {
-                code: RemarkCode,
-            },
-        })
-        .processSync(doc).result;
-
-    return (
-        <div
-            className={`preview markdown-body ${css`
-                flex: 0 0 50%;
-                padding: 12px;
-                box-sizing: border-box;
-                overflow: auto;
-                color: #abb2bf;
-                pre {
-                    background-color: rgba(27, 31, 35, 0.45);
-                }
-            `}`}
-        >
-            {md}
-        </div>
-    );
-};
+}>) => (
+    <div
+        className={`preview markdown-body ${css`
+            flex: 0 0 50%;
+            padding: 0 16px;
+            box-sizing: border-box;
+            overflow: auto;
+            color: #abb2bf;
+            font-family: JetBrains Mono !important;
+            pre {
+                background-color: rgba(27, 31, 35, 0.45);
+                font-family: JetBrains Mono !important;
+            }
+        `}`}
+    >
+        {
+            unified()
+                .use(remarkParse)
+                .use(remarkGfm)
+                .use(remarkReact, {
+                    createElement: React.createElement,
+                    remarkReactComponents: {
+                        code: RemarkCode,
+                    },
+                    sanitize: {
+                        ...defaultSchema,
+                        attributes: {
+                            ...defaultSchema.attributes,
+                            code: [
+                                ...(defaultSchema.attributes?.code || []),
+                                'className',
+                            ],
+                        },
+                    },
+                })
+                .processSync(doc).result
+        }
+    </div>
+);
 
 export default Preview;

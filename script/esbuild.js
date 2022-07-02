@@ -1,5 +1,6 @@
 import { build } from 'esbuild';
 
+const env = process.env.NODE_ENV;
 (() =>
     build({
         entryPoints: ['src/index.tsx'],
@@ -13,8 +14,9 @@ import { build } from 'esbuild';
         minifyWhitespace: true,
         platform: 'browser',
         logLevel: 'silent',
+        sourcemap: env !== 'production',
         watch:
-            process.env.NODE_ENV === 'production'
+            env === 'production'
                 ? undefined
                 : {
                       onRebuild: (error, result) =>
