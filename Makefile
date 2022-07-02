@@ -33,9 +33,8 @@ start:
 
 ## transpile
 transpile:
-	node script/esbuild.js\
-		&& cd build/ && cp index.html 200.html && cd ../\
-		&& node script/terser.js
+	node script/esbuild.js
+		&& cd build/ && cp index.html 200.html && cd ../
 
 ## build
 pre-build:
